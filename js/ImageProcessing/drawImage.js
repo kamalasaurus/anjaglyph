@@ -1,10 +1,9 @@
-export default function drawCanvas(imageURL) {
-  const img = new Image();
-  img.onload = () => {
-    document
-      .getElementById('processed-image')
-      .appendChild(img);
-  };
-  img.src = imageURL;
+export default function drawImage(imgData, width, height) {
+  document
+    .getElementById('processed-image')
+    .getContext('2d')
+    .putImageData(imgData, 0, 0);
+
+  return;
 }
 
