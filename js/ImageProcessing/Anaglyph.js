@@ -1,40 +1,25 @@
 export default class Anjaglyph {
 
   constructor(imgData) {
-    let compCh = new Uint8ClampedArray(imgData.data);
-
     const width = imgData.width;
+    const xOffsets = [-10, 10];
 
-    // need to have a nested array of offsets by plane
-    // realistically, will have two planes, flat bg and
-    // a foreground that is drawn in b/w and offset
-    const xOffsets = [ -10, 10 ];
-
-    const [ redCh, blueCh ] = this.channels(imgData);
-
-    [ redCh, blueCh ]
+    const compCh = this.channels(imgData.data)
       .map((channel, i) => {
         return this.offsetChannel(channel, xOffsets[i], width);
       })
-      .forEach((channel) => this.composite(compCh, channel));
+      .reduce(this.composite, new Uint8ClampedArray(imgData.data));
 
     return compCh;
   }
 
   composite(compCh, colorChannel) {
-    loop: for (let i = 0; i < compCh.length; i += 4) {
-      channelType: switch (colorChannel.channel) {
-        case 'red':
-          compCh[i] += colorChannel[i];
-          break channelType;
-        case 'blue':
-          compCh[i + 2] += colorChannel[i];
-          break channelType;
-        default:
-          break channelType;
-      }
+    const colorOffset = ['red', 'green', 'blue', 'alpha'];
+    const cOff = colorOffset[colorChannel.channel];
+    for (let i = 0; i < compCh.length; i += 4) {
+      compCh[i + cOff] += colorChannel[i];
     }
-    return;
+    return compCh;
   }
 
   offsetChannel(channel, xOffset, width) {
@@ -54,30 +39,30 @@ export default class Anjaglyph {
   }
 
   greaterThanFirstRowPixel(index, offset, row, width) {
-    return [ index, offset ].every((pixel) => pixel >= (row * width));
+    return [index, offset].every((pixel) => pixel >= (row * width));
   }
 
   lessThanLastRowPixel(index, offset, row, width) {
-    return [ index, offset ].every((pixel) => pixel < ((row + 1) * width));
+    return [index, offset].every((pixel) => pixel < ((row + 1) * width));
   }
 
-  channels(imgData) {
-    let redCh = new Uint8ClampedArray(imgData.data.length / 4);
-        redCh['channel'] = 'red';
-    let blueCh = new Uint8ClampedArray(imgData.data.length / 4);
-        blucCh['channel'] = 'blue';
+  channels(data) {
+    const redCh = new Uint8ClampedArray(data.length / 4);
+    redCh.channel = 'red';
+    const blueCh = new Uint8ClampedArray(data.length / 4);
+    blueCh.channel = 'blue';
 
-    this.iterator(imgData, (i, r, g, b, a) => {
+    this.iterator(data, (i, r, b) => {
       redCh[i] = r;
       blueCh[i] = b;
     });
 
-    return [ redCh, blueCh ];
+    return [redCh, blueCh];
   }
 
-  iterator(imgData, collector) {
-    for (let i = 0; i < imgData.data.length; i += 4){
-      collector(i, imgData[i], imgData[i + 1], imgData[i + 2], imgData[i + 3]);
+  iterator(data, collector) {
+    for (let i = 0; i < data.length; i += 4) {
+      collector(i, data[i], data[i + 2]);
     }
     return;
   }

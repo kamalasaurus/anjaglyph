@@ -13,6 +13,7 @@ module.exports = {
       "wrap-iife": 0,
       "no-void": 0,
       "react/require-extension": 0,
-      "arrow-body-style": 0
+      "arrow-body-style": 0,
+      "no-param-reassign": 0
     }
 };

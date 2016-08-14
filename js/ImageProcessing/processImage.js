@@ -1,11 +1,15 @@
 import Anjaglyph from './Anjaglyph';
 import drawImage from './drawImage';
 
-export default function processImage(file) {
-  const reader = new FileReader();
+function extract(img) {
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(img, 0, 0);
 
-  reader.readAsDataURL(file);
-  reader.onload = render.bind(this, reader);
+  const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const anaglyph = new Anjaglyph(imgData);
+
+  drawImage(anaglyph, imgData.width, imgData.height);
   return;
 }
 
@@ -16,15 +20,11 @@ function render(reader) {
   return;
 }
 
-function extract(img) {
-  const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0);
+export default function processImage(file) {
+  const reader = new FileReader();
 
-  const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-  const anaglyph = new Anjaglyph(imgData);
-
-  drawImage(anaglyph, imgData.width, imgData.height);
+  reader.readAsDataURL(file);
+  reader.onload = render.bind(this, reader);
   return;
 }
 
