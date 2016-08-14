@@ -7,8 +7,6 @@ function submitFile(event) {
 
   if (fileList.length > 0) {
     processImage(fileList[0]);
-  } else {
-    console.error('no files uploaded!');
   }
 
   event.stopPropagation();
