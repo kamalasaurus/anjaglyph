@@ -1,0 +1,27 @@
+{
+  "scripts": {
+    "start": "parallelshell 'live-server' 'npm run lint:watch'",
+    "lint": "eslint js || true",
+    "lint:watch": "watch 'eslint js' js",
+    "inst": "parallelshell 'npm install' 'jspm install'"
+  },
+  "jspm": {
+    "dependencies": {
+      "css": "github:systemjs/plugin-css@^0.1.23",
+      "json": "github:systemjs/plugin-json@^0.1.2"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  },
+  "devDependencies": {
+    "eslint": "^3.3.0",
+    "eslint-config-airbnb": "^10.0.0",
+    "eslint-plugin-import": "^1.13.0",
+    "eslint-plugin-jsx-a11y": "^2.1.0",
+    "eslint-plugin-react": "^6.0.0"
+  }
+}
+

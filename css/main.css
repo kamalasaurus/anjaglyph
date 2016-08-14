@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: "Lucida Console", "Monaco", monospace;
+}
+
+nav {
+  height: 4rem;
+  background-color: teal;
+  text-align: center;
+}
+
+nav form, nav div {
+  display: inline-block;
+  line-height: 2rem;
+  height: 2rem;
+  margin-top: 0.5rem;
+  padding: 0 0.5rem;
+}
+
+nav div {
+  background-color: #318cdc;
+  color: white;
+  font-size: 1.125rem;
+  cursor: pointer;
+}
+
