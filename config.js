@@ -21,6 +21,7 @@ System.config({
     "get-pixels": "npm:get-pixels@3.3.0",
     "isndarray": "npm:isndarray@1.0.0",
     "json": "github:systemjs/plugin-json@0.1.2",
+    "mithril": "npm:mithril@0.2.5",
     "ndarray": "npm:ndarray@1.0.18",
     "ndarray-convolve": "npm:ndarray-convolve@2.0.0",
     "ndarray-gaussian-filter": "npm:ndarray-gaussian-filter@1.0.0",

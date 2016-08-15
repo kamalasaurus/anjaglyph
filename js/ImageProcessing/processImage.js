@@ -12,6 +12,7 @@ function extract(img) {
   const anaglyph = new Anjaglyph(imgData);
 
   drawImage(anaglyph, img.width, img.height);
+  // demarcateForeground(img, canvas)
   return;
 }
 

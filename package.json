@@ -8,7 +8,8 @@
   "jspm": {
     "dependencies": {
       "css": "github:systemjs/plugin-css@^0.1.23",
-      "json": "github:systemjs/plugin-json@^0.1.2"
+      "json": "github:systemjs/plugin-json@^0.1.2",
+      "mithril": "npm:mithril@^0.2.5"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",

@@ -1,5 +1,5 @@
 export default function drawImage(imgArray, width, height) {
-  const canvas = document.getElementById('processed-image');
+  const canvas = document.createElement('canvas');
   canvas.width = width;
   canvas.height = height;
   const ctx = canvas.getContext('2d');
@@ -9,6 +9,9 @@ export default function drawImage(imgArray, width, height) {
     return;
   });
   ctx.putImageData(imgData, 0, 0);
+  document
+    .getElementById('processed-image')
+    .appendChild(canvas);
   return;
 }
 
