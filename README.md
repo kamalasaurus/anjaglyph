@@ -1,14 +1,14 @@
 # TODO
 
-PORT TO WEBGL?
+port to webgl?
 
-USE MITHRIL FOR CANVAS INPUT
+use mithril for canvas input
 
-NEXT STEPS:
-ANOTHER CANVAS TO DEMARCATE FOREGROUND AND BACKGROUND
-HOW MANY PLANES SHOULD IT SUPPORT?
+NEXT:
+another canvas to demarcate foreground and background
+how many planes should it support?
 
-VIDEO EDITING ABILITY...  HOW MUCH CAN IT STORE IN MEMORY?  TIME LIMIT?
+video editing ability...  how much can it store in memory?  time limit?
 
 FRIGHTENED RABBIT - THE WOODPILE
 FRIGHTENED RABBIT - DEATH DREAMS
