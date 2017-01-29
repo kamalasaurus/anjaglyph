@@ -13,6 +13,9 @@ function extract(img) {
 
   drawImage(anaglyph, img.width, img.height);
   // demarcateForeground(img, canvas)
+  // OKAY, for an interactive canvas interface...
+  // I'm gonna have to use mithril or something
+  // So this prototype is archetype frozen, need to
   return;
 }
 
